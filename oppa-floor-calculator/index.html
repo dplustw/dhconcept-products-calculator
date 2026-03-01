@@ -397,10 +397,10 @@
 
     <div id="result" class="result" style="display: none;"></div>
     <div class="cta">
-      <small>截圖保存結果了嗎？</small>
-      <a href="https://www.dhconcept.com/item/7?utm_source=Website&utm_medium=dHSHOP_Promotion&utm_campaign=250513_dHSHOP_promotion_flooring"
+      <small>計算完成後點擊下方按鈕，直接加入購物車</small>
+      <a id="ctaLink" href="https://www.dhconcept.com/item/7?utm_source=Website&utm_medium=dHSHOP_Promotion&utm_campaign=250513_dHSHOP_promotion_flooring"
         target="_blank">
-        前往 歐巴地板 商品頁
+        將 歐巴地板 加入購物車
       </a>
     </div>
     <!-- <p class="tip">
@@ -484,6 +484,13 @@
       }
 
       const boxes = Math.ceil(totalPing / PING_PER_BOX);
+
+      // 更新 CTA 連結帶上 qty 參數
+      const ctaLink = document.getElementById('ctaLink');
+      const baseUrl = ctaLink.href.split('?')[0];
+      const params = new URLSearchParams(ctaLink.href.split('?')[1] || '');
+      params.set('qty', boxes);
+      ctaLink.href = baseUrl + '?' + params.toString();
 
       resultEl.style.display = "block";
       resultEl.innerHTML = `

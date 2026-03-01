@@ -353,10 +353,9 @@
     <div id="result" class="result" style="display:none;"></div>
 
     <div class="cta">
-      <small>截圖保存結果了嗎？</small>
-      <a href="https://dhconcept.com/item/287?_gl=1*1bjyg3p*_gcl_au*ODE1NDk3ODIxLjE3NjQxMzU4NjcuMTAyOTQwMDAyNS4xNzY1NTMwMjAxLjE3NjU1MzEyMjg.*_ga*OTU5OTgyOTczLjE3NjQxMzU4Njc.*_ga_M2W8GX92HV*czE3NjU1MzAxOTckbzEzJGcxJHQxNzY1NTMxMjQ3JGo0MyRsMCRoMA.."
-        target="_blank" rel="noopener">
-        前往 小歐巴地板 商品頁
+      <small>計算完成後點擊下方按鈕，直接加入購物車</small>
+      <a id="ctaLink" href="https://dhconcept.com/item/287" target="_blank" rel="noopener">
+        將 小歐巴地板 加入購物車
       </a>
     </div>
   </div>
@@ -433,6 +432,10 @@
       }
 
       const boxes = Math.ceil(totalPing / PING_PER_BOX);
+
+      // 更新 CTA 連結帶上 qty 參數
+      const ctaLink = document.getElementById('ctaLink');
+      ctaLink.href = 'https://dhconcept.com/item/287?qty=' + boxes;
 
       resultEl.style.display = "block";
       resultEl.innerHTML = `

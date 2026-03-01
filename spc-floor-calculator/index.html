@@ -310,9 +310,9 @@
     <div id="result" class="result" style="display:none;"></div>
 
     <div class="cta">
-      <small>截圖保存結果了嗎？</small>
-      <a href="https://dhconcept.com/item/1104" target="_blank" rel="noopener">
-        返回 dH-SPC 地板 商品頁
+      <small>計算完成後點擊下方按鈕，直接加入購物車</small>
+      <a id="ctaLink" href="https://dhconcept.com/item/1104" target="_blank" rel="noopener">
+        將 dH-SPC地板 加入購物車
       </a>
     </div>
   </div>
@@ -391,6 +391,10 @@
       }
 
       const boxes = Math.ceil(totalPing / PING_PER_BOX);
+
+      // 更新 CTA 連結帶上 qty 參數
+      const ctaLink = document.getElementById('ctaLink');
+      ctaLink.href = 'https://dhconcept.com/item/1104?qty=' + boxes;
 
       resultEl.style.display = "block";
       resultEl.innerHTML = `
